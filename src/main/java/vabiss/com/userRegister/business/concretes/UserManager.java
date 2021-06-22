@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import vabiss.com.userRegister.business.abstracts.UserService;
 import vabiss.com.userRegister.business.constants.Messages;
 import vabiss.com.userRegister.core.business.BusinessEngine;
+import vabiss.com.userRegister.core.extensions.secure.TokenManager;
 import vabiss.com.userRegister.core.utils.dtoConverter.ObjectMapper;
 import vabiss.com.userRegister.core.utils.results.DataResult;
 import vabiss.com.userRegister.core.utils.results.ErrorDataResult;
@@ -32,19 +33,24 @@ public class UserManager implements UserService {
 		this.userDao = userDao;
 	}
 
+	@Autowired
+	private TokenManager tokenManager;
+
 	@Override
 	public Result add(UserDto userDto) {
-		Result result = BusinessEngine.run(checkUserName(userDto.getUserName()), checkPassword(userDto.getPassword()),checkUserExists(userDto.getUserName()));
+		String token = tokenManager.generateToken(userDto.getUserName());
+		Result result = BusinessEngine.run(checkUserName(userDto.getUserName()), checkPassword(userDto.getPassword()),
+				checkUserExists(userDto.getUserName()));
 
 		if (result.isSuccess()) {
 			this.userDao.save(ObjectMapper.map(userDto, User.class));
-			return new SuccessResult(Messages.userAdded);
+			return new SuccessResult(Messages.userAdded+".Sizin tokeniniz:"+token);
 		}
 
 		return new ErrorResult(result.getMessage());
 	}
 
-	@Override 
+	@Override
 	public DataResult<List<User>> getAll() {
 		return new SuccessDataResult<List<User>>(this.userDao.findAll(), Messages.userListed);
 	}
@@ -71,9 +77,9 @@ public class UserManager implements UserService {
 		}
 		return new SuccessResult();
 	}
-	
+
 	private Result checkUserExists(String userName) {
-		if(this.userDao.existsByUserName(userName)) {
+		if (this.userDao.existsByUserName(userName)) {
 			return new ErrorResult(Messages.userExists);
 		}
 		return new SuccessResult();
