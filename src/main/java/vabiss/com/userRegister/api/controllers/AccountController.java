@@ -3,9 +3,6 @@ package vabiss.com.userRegister.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import vabiss.com.userRegister.business.abstracts.AccounService;
-import vabiss.com.userRegister.core.extensions.secure.TokenManager;
 import vabiss.com.userRegister.core.utils.results.DataResult;
 import vabiss.com.userRegister.core.utils.results.Result;
 import vabiss.com.userRegister.entities.dtos.UserDto;
