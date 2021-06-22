@@ -1,5 +1,7 @@
 package vabiss.com.userRegister.core.utils.dtoConverter;
 
+/*Mapping üçün base class */
+
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;

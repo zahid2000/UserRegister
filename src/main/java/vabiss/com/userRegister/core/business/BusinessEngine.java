@@ -1,5 +1,7 @@
 package vabiss.com.userRegister.core.business;
 
+/*bu klas resultları yoxlayır və error olarsa dayanır və çıxışa  resultu göndərir */
+
 import org.springframework.stereotype.Component;
 
 import vabiss.com.userRegister.core.utils.results.Result;

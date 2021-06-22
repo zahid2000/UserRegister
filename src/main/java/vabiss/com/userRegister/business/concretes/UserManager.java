@@ -1,5 +1,7 @@
 package vabiss.com.userRegister.business.concretes;
 
+/*iş kodları yəni servis */
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

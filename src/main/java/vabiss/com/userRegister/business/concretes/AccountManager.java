@@ -5,12 +5,10 @@ import org.springframework.stereotype.Service;
 
 import vabiss.com.userRegister.business.abstracts.AccounService;
 import vabiss.com.userRegister.business.abstracts.UserService;
-import vabiss.com.userRegister.core.utils.dtoConverter.ObjectMapper;
 import vabiss.com.userRegister.core.utils.results.DataResult;
 import vabiss.com.userRegister.core.utils.results.ErrorDataResult;
 import vabiss.com.userRegister.core.utils.results.Result;
 import vabiss.com.userRegister.core.utils.results.SuccessDataResult;
-import vabiss.com.userRegister.entities.concretes.User;
 import vabiss.com.userRegister.entities.dtos.UserDto;
 
 @Service
